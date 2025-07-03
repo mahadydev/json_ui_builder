@@ -1,0 +1,22 @@
+name: json_ui_builder
+description: A powerful Flutter package for building dynamic UIs from JSON configurations. Supports bi-directional conversion, widget identification, and comprehensive widget support.
+version: 0.0.1
+homepage: https://github.com/mahadydev/json_ui_builder
+repository: https://github.com/mahadydev/json_ui_builder
+issue_tracker: https://github.com/mahadydev/json_ui_builder/issues
+
+environment:
+  sdk: ^3.8.1
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+
+flutter:
