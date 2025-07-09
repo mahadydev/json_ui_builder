@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:json_ui_builder/src/widgets/dropTarget_widget.dart';
 
 import '../converters/json_to_widget_converter.dart';
 import '../converters/widget_to_json_converter.dart';
@@ -43,6 +44,18 @@ class JsonUIBuilder {
     MaterialWidgets.register();
     ScrollableWidgets.register();
     ImageWidgets.register();
+
+    widget_builder.WidgetBuilder.registry.registerWidget(
+      'DropTarget',
+      (config) => DropTargetWidget(
+        config: config.toJson(), // Convert WidgetConfig to Map<String, dynamic>
+        child: config.child != null
+            ? buildFromJson(config.child)
+            : const SizedBox.shrink(),
+        // You may need to pass onDrop via a global/static callback or context
+      ),
+      ['child'],
+    );
 
     _initialized = true;
   }
