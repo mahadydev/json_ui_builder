@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../models/widget_config.dart'; // Import your WidgetConfig
+
 class DropTargetWidget extends StatelessWidget {
-  final Map<String, dynamic> config;
+  final WidgetConfig config;
   final Widget child;
   final void Function(String parentId, String widgetType)? onDrop;
 
@@ -14,12 +16,11 @@ class DropTargetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Use config['id'] for the parentId
     return DragTarget<Map<String, dynamic>>(
       onWillAcceptWithDetails: (data) => true,
       onAcceptWithDetails: (data) {
         if (onDrop != null) {
-          onDrop!(config['id'] ?? '', data.data['type'] as String);
+          onDrop!(config.id ?? '', data.data['type'] as String);
         }
       },
       builder: (context, candidateData, rejectedData) {

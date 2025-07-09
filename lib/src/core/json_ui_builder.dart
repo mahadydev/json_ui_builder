@@ -48,11 +48,11 @@ class JsonUIBuilder {
     widget_builder.WidgetBuilder.registry.registerWidget(
       'DropTarget',
       (config) => DropTargetWidget(
-        config: config.toJson(), // Convert WidgetConfig to Map<String, dynamic>
+        config: config, // Now config is WidgetConfig
         child: config.child != null
-            ? buildFromJson(config.child)
+            ? buildFromConfig(config.child!)
             : const SizedBox.shrink(),
-        // You may need to pass onDrop via a global/static callback or context
+        // onDrop: ... (set up as needed)
       ),
       ['child'],
     );
