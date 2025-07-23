@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:json_ui_builder/src/widgets/misc_widgets.dart';
 
 import '../converters/json_to_widget_converter.dart';
 import '../converters/widget_to_json_converter.dart';
@@ -43,6 +44,7 @@ class JsonUIBuilder {
     MaterialWidgets.register();
     ScrollableWidgets.register();
     ImageWidgets.register();
+    MiscWidgets.register();
 
     _initialized = true;
   }
