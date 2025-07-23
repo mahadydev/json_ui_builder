@@ -69,6 +69,16 @@ class LayoutWidgets {
     final color = PropertyParser.parseColor(config, 'color');
     final padding = PropertyParser.parseEdgeInsets(config, 'padding');
     final margin = PropertyParser.parseEdgeInsets(config, 'margin');
+
+    final borderRadius = PropertyParser.parseDouble(config, 'borderRadius');
+
+    final leftBorder = PropertyParser.parseDouble(config, 'leftBorder');
+    final rightBorder = PropertyParser.parseDouble(config, 'rightBorder');
+    final topBorder = PropertyParser.parseDouble(config, 'topBorder');
+    final bottomBorder = PropertyParser.parseDouble(config, 'bottomBorder');
+    final borderColor = PropertyParser.parseColor(config, 'borderColor');
+    final borderWidth = PropertyParser.parseDouble(config, 'borderWidth');
+
     final alignment = PropertyParser.parseAlignment(config, 'alignment');
     final decoration = PropertyParser.parseBoxDecoration(config, 'decoration');
     final child = WidgetParser.parseChild(config);
@@ -76,11 +86,48 @@ class LayoutWidgets {
     return Container(
       width: width,
       height: height,
-      color: decoration == null ? color : null,
+      // color: decoration == null ? color : null,
       padding: padding,
       margin: margin,
       alignment: alignment,
-      decoration: decoration,
+      decoration: BoxDecoration(
+        borderRadius: borderRadius == null
+            ? null
+            : BorderRadius.circular(borderRadius),
+        color: color,
+        border: borderRadius != null
+            ? Border.all(
+                color: borderColor ?? Colors.transparent,
+                width: borderWidth ?? 0.0,
+              )
+            : Border(
+                top: BorderSide(
+                  width: topBorder ?? 0.0,
+                  color: topBorder == null
+                      ? Colors.transparent
+                      : borderColor ?? Colors.transparent,
+                ),
+                bottom: BorderSide(
+                  width: bottomBorder ?? 0.0,
+                  color: bottomBorder == null
+                      ? Colors.transparent
+                      : borderColor ?? Colors.transparent,
+                ),
+                left: BorderSide(
+                  width: leftBorder ?? 0.0,
+                  color: leftBorder == null
+                      ? Colors.transparent
+                      : borderColor ?? Colors.transparent,
+                ),
+                right: BorderSide(
+                  width: rightBorder ?? 0.0,
+                  color: rightBorder == null
+                      ? Colors.transparent
+                      : borderColor ?? Colors.transparent,
+                ),
+              ),
+      ),
+
       child: child,
     );
   }
