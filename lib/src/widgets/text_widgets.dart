@@ -45,6 +45,8 @@ class TextWidgets {
 
   static Widget _buildText(WidgetConfig config) {
     final text = PropertyParser.parseRequiredString(config, 'text');
+    final fontSize = PropertyParser.parseDouble(config, 'fontSize');
+    final letterSpacing = PropertyParser.parseDouble(config, 'letterSpacing');
     final style = PropertyParser.parseTextStyle(config, 'style');
     final textAlign = PropertyParser.parseTextAlign(config, 'textAlign');
     final overflow = _parseTextOverflow(config.getProperty<String>('overflow'));
@@ -52,7 +54,10 @@ class TextWidgets {
 
     return Text(
       text,
-      style: style,
+      style: TextStyle(
+        fontSize: fontSize ?? 16.0,
+        letterSpacing: letterSpacing ?? 0.0,
+      ),
       textAlign: textAlign,
       overflow: overflow,
       maxLines: maxLines,
