@@ -152,7 +152,7 @@ class PropertyParser {
 
     return TextStyle(
       fontSize: parseDoubleFromMap(value, 'fontSize'),
-      fontWeight: parseFontWeight(value['fontWeight']),
+      // fontWeight: parseFontWeight(value['fontWeight']),
       color: WidgetUtils.parseColor(value['color']),
       fontFamily: value['fontFamily'] as String?,
       letterSpacing: parseDoubleFromMap(value, 'letterSpacing'),
@@ -162,7 +162,9 @@ class PropertyParser {
   }
 
   /// Parses FontWeight from string or number.
-  static FontWeight? parseFontWeight(dynamic value) {
+  static FontWeight? parseFontWeight(WidgetConfig config, String propertyName) {
+    final value = config.getProperty(propertyName);
+
     if (value == null) return null;
 
     if (value is String) {

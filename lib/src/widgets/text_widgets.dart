@@ -47,6 +47,8 @@ class TextWidgets {
     final text = PropertyParser.parseRequiredString(config, 'text');
     final fontSize = PropertyParser.parseDouble(config, 'fontSize');
     final letterSpacing = PropertyParser.parseDouble(config, 'letterSpacing');
+    final color = PropertyParser.parseColor(config, 'color');
+    final fontWeight = PropertyParser.parseFontWeight(config, 'fontWeight');
     final style = PropertyParser.parseTextStyle(config, 'style');
     final textAlign = PropertyParser.parseTextAlign(config, 'textAlign');
     final overflow = _parseTextOverflow(config.getProperty<String>('overflow'));
@@ -57,6 +59,8 @@ class TextWidgets {
       style: TextStyle(
         fontSize: fontSize ?? 16.0,
         letterSpacing: letterSpacing ?? 0.0,
+        color: color ?? Colors.black,
+        fontWeight: fontWeight,
       ),
       textAlign: textAlign,
       overflow: overflow,
@@ -191,7 +195,7 @@ class TextWidgets {
 
     return TextStyle(
       fontSize: styleMap['fontSize']?.toDouble(),
-      fontWeight: PropertyParser.parseFontWeight(styleMap['fontWeight']),
+      //  fontWeight: PropertyParser.parseFontWeight(styleMap['fontWeight']),
       color: _parseColorFromValue(styleMap['color']),
       fontFamily: styleMap['fontFamily'] as String?,
       letterSpacing: styleMap['letterSpacing']?.toDouble(),
