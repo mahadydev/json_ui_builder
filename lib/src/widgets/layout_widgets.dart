@@ -67,8 +67,16 @@ class LayoutWidgets {
     final width = PropertyParser.parseDimension(config, 'width');
     final height = PropertyParser.parseDimension(config, 'height');
     final color = PropertyParser.parseColor(config, 'color');
-    final padding = PropertyParser.parseEdgeInsets(config, 'padding');
-    final margin = PropertyParser.parseEdgeInsets(config, 'margin');
+    //final padding = PropertyParser.parseEdgeInsets(config, 'padding');
+    final leftPadding = PropertyParser.parseDouble(config, 'leftPadding');
+    final rightPadding = PropertyParser.parseDouble(config, 'rightPadding');
+    final topPadding = PropertyParser.parseDouble(config, 'topPadding');
+    final bottomPadding = PropertyParser.parseDouble(config, 'bottomPadding');
+    //final margin = PropertyParser.parseDouble(config, 'margin');
+    final leftMargin = PropertyParser.parseDouble(config, 'leftMargin');
+    final rightMargin = PropertyParser.parseDouble(config, 'rightMargin');
+    final topMargin = PropertyParser.parseDouble(config, 'topMargin');
+    final bottomMargin = PropertyParser.parseDouble(config, 'bottomMargin');
 
     final borderRadius = PropertyParser.parseDouble(config, 'borderRadius');
 
@@ -87,8 +95,18 @@ class LayoutWidgets {
       width: width,
       height: height,
       // color: decoration == null ? color : null,
-      padding: padding,
-      margin: margin,
+      padding: EdgeInsets.only(
+        left: leftPadding ?? 0.0,
+        right: rightPadding ?? 0.0,
+        top: topPadding ?? 0.0,
+        bottom: bottomPadding ?? 0.0,
+      ),
+      margin: EdgeInsets.only(
+        left: leftMargin ?? 0.0,
+        right: rightMargin ?? 0.0,
+        top: topMargin ?? 0.0,
+        bottom: bottomMargin ?? 0.0,
+      ),
       alignment: alignment,
       decoration: BoxDecoration(
         borderRadius: borderRadius == null
